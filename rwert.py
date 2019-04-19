@@ -373,19 +373,25 @@ class Knight(Piece):
         return allPossibleMoves
 
 
-class ComputerMoves(Pawn,Rook,Queen,Bishop,King,Knight):
+class ComputerMoves(Pawn,Rook,Queen,Bishop,King):
 
     def __init__(self):
-        self.allPossibleMoves = Pawn.allPossibleMoves
-        self.allPossibleMoves.extend(Rook.allPossibleMoves)
-        self.allPossibleMoves.extend(Queen.allPossibleMoves)
-        self.allPossibleMoves.extend(Bishop.allPossibleMoves)
-        self.allPossibleMoves.extend(King.allPossibleMoves)
-        self.allPossibleMoves.extend(Knight.allPossibleMoves)
+        self.allPossibleMoves = Pawn.moves(Pawn)
+        self.allPossibleMoves.extend(Rook.moves(Rook))
+        self.allPossibleMoves.extend(Queen.moves(Queen))
+        self.allPossibleMoves.extend(Bishop.moves(Bishop))
+        self.allPossibleMoves.extend(King.moves(King))
+        self.allPossibleMoves.extend(Knight.moves(Knight))
+        #Knight.
 
     def computerMoves(self):
         for x in self.allPossibleMoves:
             if x == self.pos:
                 print("you're in trouble")
 
+
+
+
+a = ComputerMoves()
+print(a.__dict__)
 
