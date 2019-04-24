@@ -1,17 +1,18 @@
 class Piece(object):
 
-    def __init__(self, player, value, name, pos):
-        self.color = player.color
+    def __init__(self, player, value, name, pos, image):
+        self.color = player
         self.value = value
         self.value = name
         self.numberOfmoves = 0
         self.pos = pos
+        self.image = image
 
 
 class Pawn(Piece):
 
-    def __init__(self, player, pos):
-        Piece.__init__(player, 1, 'Pawn', pos)
+    def __init__(self, player, pos, image):
+        Piece.__init__(self, player, 1, 'Pawn', pos, image)
 
     def moves(chessBoard):
 
@@ -65,8 +66,8 @@ class Pawn(Piece):
 
 class Rook(Piece):
 
-    def __init__(self, player, pos):
-        Piece.__init__(player, 7, 'Rook', pos)
+    def __init__(self, player, pos, image):
+        Piece.__init__(self, player, 7, 'Rook', pos, image)
 
     def moves(chessBoard):
 
@@ -125,8 +126,8 @@ class Rook(Piece):
 
 class Queen(Piece):
 
-    def __init__(self, player, pos):
-        Piece.__init__(player, 9, 'Queen', pos)
+    def __init__(self, player, pos, image):
+        Piece.__init__(self, player, 9, 'Queen', pos, image)
 
     def getQueenMoves(pos, board):
         column, row = list(pos.strip().lower())
@@ -203,8 +204,8 @@ class Queen(Piece):
 
 class King(Piece):
 
-    def __init__(self, player, pos):
-        Piece.__init__(player, 10, 'King', pos)
+    def __init__(self, player, pos, image):
+        Piece.__init__(self, player, 10, 'King', pos, image)
 
     def moves(chessBoard):
 
@@ -262,8 +263,8 @@ class King(Piece):
 
 class Bishop(Piece):
 
-    def __init__(self, player, pos):
-        Piece.__init__(player, 5, 'Bishop', pos)
+    def __init__(self, player, pos, image):
+        Piece.__init__(self, player, 5, 'Bishop', pos, image)
 
     def getBishopMoves(pos, chessBoard):
 
@@ -316,8 +317,8 @@ class Bishop(Piece):
 
 class Knight(Piece):
 
-    def __init__(self, player, pos):
-        Piece.__init__(player, 5, 'Knight', pos)
+    def __init__(self, player, pos, image):
+        Piece.__init__(self, player, 5, 'Knight', pos, image)
 
     def getKnightMoves(pos, chessBoard):
 
@@ -387,6 +388,7 @@ class ComputerMoves(Pawn,Rook,Queen,Bishop,King):
         allPossibleMoves.extend(King.moves(King))
         allPossibleMoves.extend(Knight.moves(Knight))
         return allPossibleMoves
+
 
 
 
