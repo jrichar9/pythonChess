@@ -2,13 +2,8 @@ import os
 import Classes
 import pygame
 import Board
+import Classes
 
-def include(filename):
-    if os.path.exists(filename):
-        exec(open(filename).read())
-
-
-include('Classes.py')
 
 #playerColor = input("Would you like to be black or white chess pieces?")
 playerColor = 'black'
@@ -88,6 +83,7 @@ board = [[computerrook1, computerknight1, computerbishop1, computerqueen, comput
         [0, 0, 0, 0, 0, 0, 0, 0],
         [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
         [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2]]
+
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
 Board.printBoard(board, '', screen)
@@ -105,7 +101,7 @@ while running:
             if hightlighting == True:
                 pos = pygame.mouse.get_pos()
                 destinationPiece = Board.getClickedPiece(board, pos)
-                if destinationPiece and destinationPiece.color != targetPiece.color:
+                if destinationPiece and destinationPiece.player != targetPiece.player:
                     targetPiece.pos = destinationPiece.pos
                     ## delete destination piece
                     destinationPiece.color = 'none'
@@ -114,7 +110,7 @@ while running:
                     hightlighting = False
                     board = Board.fixGrid(board)
 
-                if destinationPiece and destinationPiece.color == targetPiece.color:
+                if destinationPiece and destinationPiece.player == targetPiece.player:
                     moveList = ''
                     Board.printBoard(board, moveList, screen)
                     pygame.display.flip()
@@ -131,8 +127,9 @@ while running:
             else:
                 pos = pygame.mouse.get_pos()
                 targetPiece = Board.getClickedPiece(board, pos)
-                #moveList = targetPiece.moves()
-                moveList = ['a1']
+                print(targetPiece)
+                moveList = targetPiece.moves(board)
+                print(moveList)
                 Board.printBoard(board, moveList, screen)
                 pygame.display.flip()
                 hightlighting = True
