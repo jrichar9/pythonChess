@@ -88,51 +88,64 @@ board = [[computerrook1, computerknight1, computerbishop1, computerqueen, comput
         [0, 0, 0, 0, 0, 0, 0, 0],
         [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
         [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2]]
+
+logo = pygame.image.load("images/brown_square.png")
+pygame.display.set_icon(logo)
+pygame.display.set_caption("chess v0.4")
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
 Board.printBoard(board, '', screen)
 pygame.display.flip()
 # define a variable to control the main loop
 running = True
+# define variable that checks if this is the first or second click
 hightlighting = False
 # main loop
 while running:
     # event handling, gets all event from the event queue
     for event in pygame.event.get():
-
+        # capture mouse button event
         if event.type == pygame.MOUSEBUTTONUP:
-
+            # this is the second click code
             if hightlighting == True:
                 pos = pygame.mouse.get_pos()
                 destinationPiece = Board.getClickedPiece(board, pos)
-                if destinationPiece and destinationPiece.color != targetPiece.color:
+                destination = Board.convertToGrid(pos)
+                # if there exists an enemy piece at the destination and the move is good
+                if destinationPiece and destinationPiece.color != targetPiece.color and destination in moveList:
                     targetPiece.pos = destinationPiece.pos
-                    ## delete destination piece
+                    # delete destination piece
                     destinationPiece.color = 'none'
+                    board = Board.fixGrid(board)
                     Board.printBoard(board, moveList, screen)
                     pygame.display.flip()
                     hightlighting = False
-                    board = Board.fixGrid(board)
-
+                # if there exists a player piece at destination
                 if destinationPiece and destinationPiece.color == targetPiece.color:
                     moveList = ''
                     Board.printBoard(board, moveList, screen)
                     pygame.display.flip()
                     hightlighting = False
-
+                # if there is not a piece at the estination and the move is good
+                if not destinationPiece and destination in moveList:
+                    targetPiece.pos = destination
+                    moveList = ''
+                    board = Board.fixGrid(board)
+                    Board.printBoard(board, moveList, screen)
+                    pygame.display.flip()
+                    hightlighting = False
+                # if the destination is not a vaild move
                 else:
-                    targetPiece.pos = Board.convertToGrid(pos)
                     moveList = ''
                     Board.printBoard(board, moveList, screen)
                     pygame.display.flip()
                     hightlighting = False
-                    board =Board.fixGrid(board)
-
+            # if this is the first click this move
             else:
                 pos = pygame.mouse.get_pos()
                 targetPiece = Board.getClickedPiece(board, pos)
-                #moveList = targetPiece.moves()
-                moveList = ['a1']
+                moveList = targetPiece.moves(board)
+                #moveList = ['d5','d3','e6']
                 Board.printBoard(board, moveList, screen)
                 pygame.display.flip()
                 hightlighting = True

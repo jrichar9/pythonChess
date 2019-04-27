@@ -388,12 +388,3 @@ class ComputerMoves(Pawn,Rook,Queen,Bishop,King):
         allPossibleMoves.extend(King.moves(King))
         allPossibleMoves.extend(Knight.moves(Knight))
         return allPossibleMoves
-
-
-
-
-
-
-
-
-
