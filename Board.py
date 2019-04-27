@@ -22,7 +22,7 @@ def printBoard( board, highlights, screen):
             screen.blit(cyan_square,convertToPixels(tile))
     for row in board:
         for piece in row:
-            if isinstance(piece,Classes.Piece) and piece.player != 'none':
+            if isinstance(piece,Classes.Piece):
                 screen.blit(piece.image, convertToPixels(piece.pos))
 
 
@@ -76,27 +76,6 @@ def fixGrid(board):
                 outBoard[row][column]= piece
     return outBoard
 
-
-def loadImages():
-    # load images and set the logo
-    logo = pygame.image.load("images/brown_square.png")
-    pygame.display.set_icon(logo)
-    pygame.display.set_caption("chess v0.1")
-
-    black_king = pygame.image.load("images/black_king.png")
-    black_queen = pygame.image.load("images/black_queen.png")
-    black_bishop = pygame.image.load("images/black_bishop.png")
-    black_knight = pygame.image.load("images/black_knight.png")
-    black_rook = pygame.image.load("images/black_rook.png")
-    black_pawn = pygame.image.load("images/black_pawn.png")
-    white_king = pygame.image.load("images/white_king.png")
-    white_queen = pygame.image.load("images/white_queen.png")
-    white_bishop = pygame.image.load("images/white_bishop.png")
-    white_knight = pygame.image.load("images/white_knight.png")
-    white_rook = pygame.image.load("images/white_rook.png")
-    white_pawn = pygame.image.load("images/white_pawn.png")
-
-# define a main function
 def convertToPixels(pos):
     column = ''
     row = ''
@@ -179,35 +158,7 @@ def main():
     # initialize the pygame module
     pygame.init()
     screen = pygame.display.set_mode((400, 400))
-    '''
-    bK = Classes.King(0, 10, 'king', [200, 0], pygame.image.load("images/black_king.png"))
-    bQ = Piece(0, 10, 'queen', [150, 0], pygame.image.load("images/black_queen.png"))
-    bB1=Piece(0, 10, 'bishop', [100, 0],pygame.image.load("images/black_bishop.png"))
-    bB2=Piece(0, 10, 'bishop', [250, 0],pygame.image.load("images/black_bishop.png"))
-    bKn1=Piece(0, 10, 'knight', [300, 0], pygame.image.load("images/black_knight.png"))
-    bKn2=Piece(0, 10, 'knight', [50, 0], pygame.image.load("images/black_knight.png"))
-    bR1=Piece(0, 10, 'rook', [0, 0], pygame.image.load("images/black_rook.png"))
-    bR2=Piece(0, 10, 'rook', [350, 0],pygame.image.load("images/black_rook.png"))
-    bP1=Piece(0, 10, 'pawn', [0, 50], pygame.image.load("images/black_pawn.png"))
-    
-    bP1 = Classes.Pawn('black',[0, 50])
-    bP2 = Classes.Pawn('black',[50, 50])
-    bP3 = Classes.Pawn('black',[100, 50])
-    bP4 = Classes.Pawn('black',[150, 50])
-    bP5 = Classes.Pawn('black',[200, 50])
-    bP6 = Classes.Pawn('black',[250, 50])
-    bP7 = Classes.Pawn('black',[300, 50])
-    bP8 = Classes.Pawn('black',[350, 50])
-    
-    bP1 = Classes.Pawn('black', 'A7')
-    bP2 = Classes.Pawn('black', 'B7')
-    bP3 = Classes.Pawn('black', 'C7')
-    bP4 = Classes.Pawn('black', 'D7')
-    bP5 = Classes.Pawn('black', 'E7')
-    bP6 = Classes.Pawn('black', 'F7')
-    bP7 = Classes.Pawn('black', 'G7')
-    bP8 = Classes.Pawn('black', 'H7')
-    '''
+
     pawn1 = Classes.Pawn('black', '2a')
     pawn2 = Classes.Pawn('black', '2b')
     pawn3 = Classes.Pawn('black', '2c')
@@ -252,32 +203,6 @@ def main():
 
     printBoard(board, '', screen)
     pygame.display.flip()
-    '''
-    screen.blit(black_rook, (0, 0))
-    screen.blit(black_knight, (50, 0))
-    screen.blit(black_bishop, (100, 0))
-    screen.blit(black_queen, (150, 0))
-    screen.blit(black_king, (200, 0))
-    screen.blit(black_bishop, (250, 0))
-    screen.blit(black_knight, (300, 0))
-    screen.blit(black_rook, (350, 0))
-    for i in range(8):
-        screen.blit(black_pawn, (i*50, 50))
-
-    screen.blit(white_rook, (0, 350))
-    screen.blit(white_knight, (50, 350))
-    screen.blit(white_bishop, (100, 350))
-    screen.blit(white_queen, (150, 350))
-    screen.blit(white_king, (200, 350))
-    screen.blit(white_bishop, (250, 350))
-    screen.blit(white_knight, (300, 350))
-    screen.blit(white_rook, (350, 350))
-    for i in range(8):
-        screen.blit(white_pawn, (i * 50, 300))
-
-
-    pygame.display.flip()
-    '''
 
     # define a variable to control the main loop
     running = True
