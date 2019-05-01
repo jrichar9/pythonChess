@@ -22,7 +22,7 @@ if playerColor == 'black':
     pawn7 = Classes.Pawn('black', 'g2', pygame.image.load("images/black_pawn.png"))
     pawn8 = Classes.Pawn('black', 'h2', pygame.image.load("images/black_pawn.png"))
     rook1 = Classes.Rook('black', 'a1', pygame.image.load("images/black_rook.png"))
-    rook2 = Classes.Rook('black', 'h4', pygame.image.load("images/black_rook.png"))
+    rook2 = Classes.Rook('black', 'h1', pygame.image.load("images/black_rook.png"))
     knight1 = Classes.Knight('black', 'b1', pygame.image.load("images/black_knight.png"))
     knight2 = Classes.Knight('black', 'g1', pygame.image.load("images/black_knight.png"))
     bishop1 = Classes.Bishop('black', 'c1', pygame.image.load("images/black_bishop.png"))
@@ -55,7 +55,7 @@ else:
     pawn7 = Classes.Pawn('white', 'g2', pygame.image.load("images/white_pawn.png"))
     pawn8 = Classes.Pawn('white', 'h2', pygame.image.load("images/white_pawn.png"))
     rook1 = Classes.Rook('white', 'a1', pygame.image.load("images/white_rook.png"))
-    rook2 = Classes.Rook('white', 'h4', pygame.image.load("images/white_rook.png"))
+    rook2 = Classes.Rook('white', 'h1', pygame.image.load("images/white_rook.png"))
     knight1 = Classes.Knight('white', 'b1', pygame.image.load("images/white_knight.png"))
     knight2 = Classes.Knight('white', 'g1', pygame.image.load("images/white_knight.png"))
     bishop1 = Classes.Bishop('white', 'c1', pygame.image.load("images/white_bishop.png"))
@@ -83,10 +83,10 @@ board = [[computerrook1, computerknight1, computerbishop1, computerqueen, comput
         [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7, computerpawn8],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, rook2],
+        [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
-        [rook1, knight1, bishop1, queen, king, bishop2, knight2, 0]]
+        [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2]]
 
 logo = pygame.image.load("images/brown_square.png")
 pygame.display.set_icon(logo)
