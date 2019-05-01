@@ -29,9 +29,6 @@ class Piece(object):
         self.pos = pos
         self.image = image
 
-
-
-
 class Pawn(Piece):
 
     def __init__(self, player, pos, image):
@@ -43,6 +40,7 @@ class Pawn(Piece):
         row = int(row) - 1
         column = Piece.fromLettertoNumb[column]
         solutionMoves = []
+
         if self.player == 'black':
             try:
                 temp = chessBoard[row + 1][column]
@@ -64,7 +62,7 @@ class Pawn(Piece):
             try:
                 temp = chessBoard[row + 2][column]
                 if self.numberOfmoves == 0:
-                    solutionMoves.append([row+2][column])
+                    solutionMoves.append([row+2],[column])
             except:
                 pass
         if self.player == 'white':
@@ -88,7 +86,7 @@ class Pawn(Piece):
             try:
                 temp = chessBoard[row - 2][column]
                 if self.numberOfmoves == 0:
-                    solutionMoves.append([row-2][column])
+                    solutionMoves.append([row-2],[column])
             except:
                 pass
         # get rid of negative indexes
