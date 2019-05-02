@@ -64,7 +64,7 @@ class Pawn(Piece):
             try:
                 temp = chessBoard[row + 2][column]
                 if self.numberOfmoves == 0:
-                    solutionMoves.append([row+2][column])
+                    solutionMoves.append([row+2],[column])
             except:
                 pass
         if self.player == 'white':
@@ -88,7 +88,7 @@ class Pawn(Piece):
             try:
                 temp = chessBoard[row - 2][column]
                 if self.numberOfmoves == 0:
-                    solutionMoves.append([row-2][column])
+                    solutionMoves.append([row-2],[column])
             except:
                 pass
         # get rid of negative indexes
@@ -329,6 +329,8 @@ class Bishop(Piece):
 
         return solutionMoves
 
+class getComputerMoves():
+    print('hello')
 
 class Knight(Piece):
 
