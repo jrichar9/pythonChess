@@ -327,6 +327,8 @@ class Bishop(Piece):
 
         return solutionMoves
 
+class getComputerMoves():
+    print('hello')
 
 class Knight(Piece):
 
