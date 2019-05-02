@@ -167,20 +167,13 @@ while running:
         while compMoveList == []:
             randnum = randint(1, 16)
             randnum -= 1
-            print(randnum)
-            print(computerpieces[randnum])
-            #compMoveList = computerpawn1.moves(board)
             compMoveList = computerpieces[randnum].moves(board)
         randnum2 = randint(1, len(compMoveList))
         randnum2 -= 1
         newCompPosition = compMoveList[randnum2]
-        #computerpawn1.pos = newCompPosition
         computerpieces[randnum].pos = newCompPosition
-        print(newCompPosition)
-        print(compMoveList)
         moveList = ''
         board = Board.fixGrid(board)
         Board.printBoard(board, moveList, screen)
         pygame.display.flip()
-        # if randint == 2:
         whosemove += 1

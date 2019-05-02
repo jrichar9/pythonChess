@@ -61,8 +61,12 @@ class Pawn(Piece):
                 pass
             try:
                 temp = chessBoard[row + 2][column]
+                print(temp)
                 if self.numberOfmoves == 0:
-                    solutionMoves.append([row+2],[column])
+                    print(self.numberOfmoves)
+                    solutionMoves.append([row+2,column])
+                    print(solutionMoves)
+                    self.numberOfmoves += 1
             except:
                 pass
         if self.player == 'white':
