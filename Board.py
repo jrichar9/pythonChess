@@ -42,21 +42,21 @@ def fixGrid(board):
             row = ''
             if isinstance(piece, Classes.Piece) and piece.player != 'none':
                 if piece.pos[0] == 'a':
-                    column = 7
-                if piece.pos[0] == 'b':
-                    column = 6
-                if piece.pos[0] == 'c':
-                    column = 5
-                if piece.pos[0] == 'd':
-                    column = 4
-                if piece.pos[0] == 'e':
-                    column = 3
-                if piece.pos[0] == 'f':
-                    column = 2
-                if piece.pos[0] == 'g':
-                    column = 1
-                if piece.pos[0] == 'h':
                     column = 0
+                if piece.pos[0] == 'b':
+                    column = 1
+                if piece.pos[0] == 'c':
+                    column = 2
+                if piece.pos[0] == 'd':
+                    column = 3
+                if piece.pos[0] == 'e':
+                    column = 4
+                if piece.pos[0] == 'f':
+                    column = 5
+                if piece.pos[0] == 'g':
+                    column = 6
+                if piece.pos[0] == 'h':
+                    column = 7
                 if piece.pos[1] == '1':
                     row = 0
                 if piece.pos[1] == '2':

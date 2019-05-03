@@ -40,51 +40,67 @@ if playerColor == 'black':
     computerbishop2 = Classes.Bishop('white', 'f8', pygame.image.load("images/white_bishop.png"))
     computerqueen = Classes.Queen('white', 'd8', pygame.image.load("images/white_queen.png"))
     computerking = Classes.King('white', 'e8', pygame.image.load("images/white_king.png"))
-else:
-    pawn1 = Classes.Pawn('white', 'a2', pygame.image.load("images/white_pawn.png"))
-    pawn2 = Classes.Pawn('white', 'b2', pygame.image.load("images/white_pawn.png"))
-    pawn3 = Classes.Pawn('white', 'c2', pygame.image.load("images/white_pawn.png"))
-    pawn4 = Classes.Pawn('white', 'd2', pygame.image.load("images/white_pawn.png"))
-    pawn5 = Classes.Pawn('white', 'e2', pygame.image.load("images/white_pawn.png"))
-    pawn6 = Classes.Pawn('white', 'f2', pygame.image.load("images/white_pawn.png"))
-    pawn7 = Classes.Pawn('white', 'g2', pygame.image.load("images/white_pawn.png"))
-    pawn8 = Classes.Pawn('white', 'h2', pygame.image.load("images/white_pawn.png"))
-    rook1 = Classes.Rook('white', 'a1', pygame.image.load("images/white_rook.png"))
-    rook2 = Classes.Rook('white', 'h1', pygame.image.load("images/white_rook.png"))
-    knight1 = Classes.Knight('white', 'b1', pygame.image.load("images/white_knight.png"))
-    knight2 = Classes.Knight('white', 'g1', pygame.image.load("images/white_knight.png"))
-    bishop1 = Classes.Bishop('white', 'c1', pygame.image.load("images/white_bishop.png"))
-    bishop2 = Classes.Bishop('white', 'f1', pygame.image.load("images/white_bishop.png"))
-    queen = Classes.Queen('white', 'd1', pygame.image.load("images/white_queen.png"))
-    king = Classes.King('white', 'e1', pygame.image.load("images/white_king.png"))
-    computerpawn1 = Classes.Pawn('black', 'a7', pygame.image.load("images/black_pawn.png"))
-    computerpawn2 = Classes.Pawn('black', 'b7', pygame.image.load("images/black_pawn.png"))
-    computerpawn3 = Classes.Pawn('black', 'c7', pygame.image.load("images/black_pawn.png"))
-    computerpawn4 = Classes.Pawn('black', 'd7', pygame.image.load("images/black_pawn.png"))
-    computerpawn5 = Classes.Pawn('black', 'e7', pygame.image.load("images/black_pawn.png"))
-    computerpawn6 = Classes.Pawn('black', 'f7', pygame.image.load("images/black_pawn.png"))
-    computerpawn7 = Classes.Pawn('black', 'g7', pygame.image.load("images/black_pawn.png"))
-    computerpawn8 = Classes.Pawn('black', 'h7', pygame.image.load("images/black_pawn.png"))
-    computerrook1 = Classes.Rook('black', 'a8', pygame.image.load("images/black_rook.png"))
-    computerrook2 = Classes.Rook('black', 'h8', pygame.image.load("images/black_rook.png"))
-    computerknight1 = Classes.Knight('black', 'b8', pygame.image.load("images/black_knight.png"))
-    computerknight2 = Classes.Knight('black', 'g8', pygame.image.load("images/black_knight.png"))
-    computerbishop1 = Classes.Bishop('black', 'c8', pygame.image.load("images/black_bishop.png"))
-    computerbishop2 = Classes.Bishop('black', 'f8', pygame.image.load("images/black_bishop.png"))
-    computerqueen = Classes.Queen('black', 'd8', pygame.image.load("images/black_queen.png"))
-    computerking = Classes.King('black', 'e8', pygame.image.load("images/black_king.png"))
 
-board = [
-    [computerrook1, computerknight1, computerbishop1, computerqueen, computerking, computerbishop2, computerknight2,
-     computerrook2],
-    [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7,
-     computerpawn8],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
-    [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2]]
+    board = [
+        [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2],
+        [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7,
+         computerpawn8],
+        [computerrook1, computerknight1, computerbishop1, computerqueen, computerking, computerbishop2, computerknight2,
+         computerrook2]
+    ]
+
+else:
+    pawn1 = Classes.Pawn('white', 'a7', pygame.image.load("images/white_pawn.png"))
+    pawn2 = Classes.Pawn('white', 'b7', pygame.image.load("images/white_pawn.png"))
+    pawn3 = Classes.Pawn('white', 'c7', pygame.image.load("images/white_pawn.png"))
+    pawn4 = Classes.Pawn('white', 'd7', pygame.image.load("images/white_pawn.png"))
+    pawn5 = Classes.Pawn('white', 'e7', pygame.image.load("images/white_pawn.png"))
+    pawn6 = Classes.Pawn('white', 'f7', pygame.image.load("images/white_pawn.png"))
+    pawn7 = Classes.Pawn('white', 'g7', pygame.image.load("images/white_pawn.png"))
+    pawn8 = Classes.Pawn('white', 'h7', pygame.image.load("images/white_pawn.png"))
+    rook1 = Classes.Rook('white', 'a8', pygame.image.load("images/white_rook.png"))
+    rook2 = Classes.Rook('white', 'h8', pygame.image.load("images/white_rook.png"))
+    knight1 = Classes.Knight('white', 'b8', pygame.image.load("images/white_knight.png"))
+    knight2 = Classes.Knight('white', 'g8', pygame.image.load("images/white_knight.png"))
+    bishop1 = Classes.Bishop('white', 'c8', pygame.image.load("images/white_bishop.png"))
+    bishop2 = Classes.Bishop('white', 'f8', pygame.image.load("images/white_bishop.png"))
+    queen = Classes.Queen('white', 'd8', pygame.image.load("images/white_queen.png"))
+    king = Classes.King('white', 'e8', pygame.image.load("images/white_king.png"))
+    computerpawn1 = Classes.Pawn('black', 'a2', pygame.image.load("images/black_pawn.png"))
+    computerpawn2 = Classes.Pawn('black', 'b2', pygame.image.load("images/black_pawn.png"))
+    computerpawn3 = Classes.Pawn('black', 'c2', pygame.image.load("images/black_pawn.png"))
+    computerpawn4 = Classes.Pawn('black', 'd2', pygame.image.load("images/black_pawn.png"))
+    computerpawn5 = Classes.Pawn('black', 'e2', pygame.image.load("images/black_pawn.png"))
+    computerpawn6 = Classes.Pawn('black', 'f2', pygame.image.load("images/black_pawn.png"))
+    computerpawn7 = Classes.Pawn('black', 'g2', pygame.image.load("images/black_pawn.png"))
+    computerpawn8 = Classes.Pawn('black', 'h2', pygame.image.load("images/black_pawn.png"))
+    computerrook1 = Classes.Rook('black', 'a1', pygame.image.load("images/black_rook.png"))
+    computerrook2 = Classes.Rook('black', 'h1', pygame.image.load("images/black_rook.png"))
+    computerknight1 = Classes.Knight('black', 'b1', pygame.image.load("images/black_knight.png"))
+    computerknight2 = Classes.Knight('black', 'g1', pygame.image.load("images/black_knight.png"))
+    computerbishop1 = Classes.Bishop('black', 'c1', pygame.image.load("images/black_bishop.png"))
+    computerbishop2 = Classes.Bishop('black', 'f1', pygame.image.load("images/black_bishop.png"))
+    computerqueen = Classes.Queen('black', 'd1', pygame.image.load("images/black_queen.png"))
+    computerking = Classes.King('black', 'e1', pygame.image.load("images/black_king.png"))
+
+    board = [
+        [computerrook1, computerknight1, computerbishop1, computerqueen, computerking, computerbishop2, computerknight2,
+         computerrook2],
+        [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7,
+         computerpawn8],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
+        [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2]]
+
+
 computerpieces = [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7,
                   computerpawn8, computerrook1, computerknight1, computerbishop1, computerqueen, computerking, computerbishop2,
                   computerknight2, computerrook2]
@@ -115,7 +131,7 @@ while running:
                     destinationPiece = Board.getClickedPiece(board, pos)
                     destination = Board.convertToGrid(pos)
                     # if there exists an enemy piece at the destination and the move is good
-                    if destinationPiece and destinationPiece.player != targetPiece.player and destination in moveList:
+                    if isinstance(destinationPiece, Classes.Piece) and destinationPiece.player != targetPiece.player and destination in moveList:
                         targetPiece.pos = destinationPiece.pos
                         # delete destination piece
                         destinationPiece.player = 'none'
@@ -153,6 +169,7 @@ while running:
                         moveList = targetPiece.moves(board)
                     else:
                         moveList = ''
+                    board = Board.fixGrid(board)
                     Board.printBoard(board, moveList, screen)
                     pygame.display.flip()
                     hightlighting = True
@@ -167,11 +184,13 @@ while running:
         while compMoveList == []:
             randnum = randint(1, 16)
             randnum -= 1
+
             compMoveList = computerpieces[randnum].moves(board)
         randnum2 = randint(1, len(compMoveList))
         randnum2 -= 1
         newCompPosition = compMoveList[randnum2]
         computerpieces[randnum].pos = newCompPosition
+
         moveList = ''
         board = Board.fixGrid(board)
         Board.printBoard(board, moveList, screen)
