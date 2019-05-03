@@ -86,9 +86,8 @@ class Pawn(Piece):
                 pass
             try:
                 temp = chessBoard[row + 2][column]
-                print(temp)
                 if self.numberOfmoves == 0:
-
+                    solutionMoves.append([row+2, column])
             except:
                 pass
         if self.player == 'white':
@@ -141,7 +140,7 @@ class Rook(Piece):
                     break
                 solutionMoves.append((i, column))
 
-        for i in range(row , 8, 1):
+        for i in range(row, 8, 1):
             if i != row:
                 if chessBoard[i][column] != 0:
                     break
@@ -149,18 +148,14 @@ class Rook(Piece):
 
         for j in range(column, -1, -1):
             if j != column:
-                print(chessBoard[row][j])
                 if chessBoard[row][j] != 0:
                     break
                 solutionMoves.append((row, j))
-
         for j in range(column, 8, 1):
-            if j != column:
-                print(chessBoard[row][j])
+            if j != row:
                 if chessBoard[row][j] != 0:
                     break
                 solutionMoves.append((row, j))
-
 
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
         solutionMoves.sort()
@@ -443,5 +438,13 @@ class ComputerMoves(Pawn,Rook,Queen,Bishop,King):
         allPossibleMoves.extend(King.moves(King))
         allPossibleMoves.extend(Knight.moves(Knight))
         return allPossibleMoves
+
+
+
+
+
+
+
+
 
 
