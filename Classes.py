@@ -1,5 +1,4 @@
 class Piece(object):
-
     fromLettertoNumb = {
         "a": 0,
         "b": 1,
@@ -30,29 +29,28 @@ class Piece(object):
         self.image = image
         self.name = name;
 
-    #This function removes any position where there is piece that is the players own in the list
+    # This function removes any position where there is piece that is the players own in the list
     def confirmValidMove(self, possibleMoves, chessboard):
-        validMoves =[]
+        validMoves = []
         for move in possibleMoves:
             column, row = list(move.strip().lower())
             i = int(row) - 1
             j = Piece.fromLettertoNumb[column]
             piece = chessboard[i][j]
-            #c
+            # c
             if not (isinstance(piece, int)):
                 if self.player == 'black':
                     if piece.player != 'black':
-                        validMoves.append([i,j])
+                        validMoves.append([i, j])
                 if self.player == 'white':
                     piece = chessboard[i][j]
                     if piece.player != 'white':
-                        validMoves.append([i,j])
+                        validMoves.append([i, j])
             else:
-                validMoves.append([i,j])
+                validMoves.append([i, j])
         allValidMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in validMoves]
         allValidMoves.sort()
         return allValidMoves
-
 
 
 class Pawn(Piece):
@@ -86,9 +84,8 @@ class Pawn(Piece):
                 pass
             try:
                 temp = chessBoard[row + 2][column]
-                print(temp)
                 if self.numberOfmoves == 0:
-
+                    solutionMoves.append([row + 2, column])
             except:
                 pass
         if self.player == 'white':
@@ -112,13 +109,13 @@ class Pawn(Piece):
             try:
                 temp = chessBoard[row - 2][column]
                 if self.numberOfmoves == 0:
-                    solutionMoves.append([row-2, column])
+                    solutionMoves.append([row - 2, column])
             except:
                 pass
         # get rid of negative indexes
         temp = [i for i in solutionMoves if i[0] >= 0 and i[1] >= 0]
         allPossibleMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in temp]
-        #take out positions that have a players piece at it
+        # take out positions that have a players piece at it
         validMoves = Piece.confirmValidMove(self, allPossibleMoves, chessBoard)
 
         return validMoves
@@ -141,7 +138,7 @@ class Rook(Piece):
                     break
                 solutionMoves.append((i, column))
 
-        for i in range(row , 8, 1):
+        for i in range(row, 8, 1):
             if i != row:
                 if chessBoard[i][column] != 0:
                     break
@@ -149,22 +146,21 @@ class Rook(Piece):
 
         for j in range(column, -1, -1):
             if j != column:
-                print(chessBoard[row][j])
+
                 if chessBoard[row][j] != 0:
                     break
                 solutionMoves.append((row, j))
 
         for j in range(column, 8, 1):
             if j != column:
-                print(chessBoard[row][j])
+
                 if chessBoard[row][j] != 0:
                     break
                 solutionMoves.append((row, j))
 
-
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
         solutionMoves.sort()
-        #take out positions that have a players piece at it
+        # take out positions that have a players piece at it
         validMoves = Piece.confirmValidMove(self, solutionMoves, chessBoard)
         return validMoves
 
@@ -172,7 +168,7 @@ class Rook(Piece):
 class Queen(Piece):
 
     def __init__(self, player, pos, image):
-        Piece.__init__(self, player, 9,  pos, image, 'q')
+        Piece.__init__(self, player, 9, pos, image, 'q')
 
     def moves(self, chessBoard):
         column, row = list(self.pos.strip().lower())
@@ -240,10 +236,9 @@ class Queen(Piece):
                         break
                     solutionMoves.append((i, j))
 
-
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
         solutionMoves.sort()
-        #take out positions that have a players piece at it
+        # take out positions that have a players piece at it
         validMoves = Piece.confirmValidMove(self, solutionMoves, chessBoard)
 
         return validMoves
@@ -304,7 +299,7 @@ class King(Piece):
         temp = [i for i in possibleMoves if i[0] >= 0 and i[1] >= 0]
         allPossibleMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in temp]
         allPossibleMoves.sort()
-        #take out positions that have a players piece at it
+        # take out positions that have a players piece at it
         validMoves = Piece.confirmValidMove(self, allPossibleMoves, chessBoard)
 
         return validMoves
@@ -360,7 +355,7 @@ class Bishop(Piece):
 
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
         solutionMoves.sort()
-        #take out positions that have a players piece at it
+        # take out positions that have a players piece at it
         validMoves = Piece.confirmValidMove(self, solutionMoves, chessBoard)
 
         return validMoves
@@ -422,18 +417,15 @@ class Knight(Piece):
         temp = [i for i in possibleMoves if i[0] >= 0 and i[1] >= 0]
         allPossibleMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in temp]
         allPossibleMoves.sort()
-        #take out positions that have a players piece at it
+        # take out positions that have a players piece at it
         validMoves = Piece.confirmValidMove(self, allPossibleMoves, chessBoard)
 
         return validMoves
 
 
+class ComputerMoves(Pawn, Rook, Queen, Bishop, King):
 
-
-class ComputerMoves(Pawn,Rook,Queen,Bishop,King):
-
-    #def __init__(self,player,pos):
-
+    # def __init__(self,player,pos):
 
     def getdangerpieces(self):
         allPossibleMoves = Pawn.moves(Pawn)
@@ -443,5 +435,13 @@ class ComputerMoves(Pawn,Rook,Queen,Bishop,King):
         allPossibleMoves.extend(King.moves(King))
         allPossibleMoves.extend(Knight.moves(Knight))
         return allPossibleMoves
+
+
+
+
+
+
+
+
 
 
