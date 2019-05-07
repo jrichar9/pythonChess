@@ -4,7 +4,6 @@ import Board
 import pygame
 from random import *
 
-# playerColor = input("Would you like to be black or white chess pieces?")
 playerColor = 'black'
 
 if playerColor == 'black':
@@ -105,7 +104,7 @@ computerpieces = [computerpawn1, computerpawn2, computerpawn3, computerpawn4, co
                   computerpawn8, computerrook1, computerknight1, computerbishop1, computerqueen, computerking, computerbishop2,
                   computerknight2, computerrook2]
 
-logo = pygame.image.load("images/brown_square.png")
+logo = pygame.image.load("images/white_knight.png")
 pygame.display.set_icon(logo)
 pygame.display.set_caption("chess v0.4")
 pygame.init()
