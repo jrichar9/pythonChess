@@ -132,6 +132,7 @@ while running:
                     destination = Board.convertToGrid(pos)
                     # if there exists an enemy piece at the destination and the move is good
                     if isinstance(destinationPiece, Classes.Piece) and destinationPiece.player != targetPiece.player and destination in moveList:
+                        # move piece
                         targetPiece.pos = destinationPiece.pos
                         # delete destination piece
                         destinationPiece.player = 'none'
@@ -139,6 +140,7 @@ while running:
                         Board.printBoard(board, moveList, screen)
                         pygame.display.flip()
                         hightlighting = False
+                        targetPiece.numberOfmoves +=1
                         whosemove += 1
                     # if there exists a player piece at destination
                     if destinationPiece and destinationPiece.player == targetPiece.player:
@@ -154,6 +156,7 @@ while running:
                         Board.printBoard(board, moveList, screen)
                         pygame.display.flip()
                         hightlighting = False
+                        targetPiece.numberOfmoves += 1
                         whosemove += 1
                     # if the destination is not a vaild move
                     else:
@@ -193,6 +196,7 @@ while running:
         newCompPosition = compMoveList[randnum2]
         #computerpawn1.pos = newCompPosition
         computerpieces[randnum].pos = newCompPosition
+        computerpieces[randnum].numberOfmoves += 1
         #print(newCompPosition)
         #print(compMoveList)
         moveList = ''
