@@ -36,6 +36,7 @@ def fixGrid(board):
                 [0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0]]
 
+    board = pawnPromotion(board)
     for row in board:
         for piece in row:
             column = ''
@@ -164,87 +165,19 @@ def playerInCheck(board, pos):
 
     return threteningPieces
 
-
-def main():
-    # initialize the pygame module
-    pygame.init()
-    screen = pygame.display.set_mode((400, 400))
-
-    pawn1 = Classes.Pawn('black', '2a')
-    pawn2 = Classes.Pawn('black', '2b')
-    pawn3 = Classes.Pawn('black', '2c')
-    pawn4 = Classes.Pawn('black', '2d')
-    pawn5 = Classes.Pawn('black', '2e')
-    pawn6 = Classes.Pawn('black', '2f')
-    pawn7 = Classes.Pawn('black', '2g')
-    pawn8 = Classes.Pawn('black', '2h')
-    rook1 = Classes.Rook('black', '1a')
-    rook2 = Classes.Rook('black', '1h')
-    knight1 = Classes.Knight('black', '1b')
-    knight2 = Classes.Knight('black', '1g')
-    bishop1 = Classes.Bishop('black', '1c')
-    bishop2 = Classes.Bishop('black', '1f')
-    queen = Classes.Queen('black', '1d')
-    king = Classes.King('black', '1e')
-    computerpawn1 = Classes.Pawn('white', '7a')
-    computerpawn2 = Classes.Pawn('white', '7b')
-    computerpawn3 = Classes.Pawn('white', '7c')
-    computerpawn4 = Classes.Pawn('white', '7d')
-    computerpawn5 = Classes.Pawn('white', '7e')
-    computerpawn6 = Classes.Pawn('white', '7f')
-    computerpawn7 = Classes.Pawn('white', '7g')
-    computerpawn8 = Classes.Pawn('white', '7h')
-    computerrook1 = Classes.Rook('white', '8a')
-    computerrook2 = Classes.Rook('white', '8h')
-    computerknight1 = Classes.Knight('white', '8b')
-    computerknight2 = Classes.Knight('white', '8g')
-    computerbishop1 = Classes.Bishop('white', '8c')
-    computerbishop2 = Classes.Bishop('white', '8f')
-    computerqueen = Classes.Queen('white', '8d')
-    computerking = Classes.King('white', '8e')
-
-    board = [[computerrook1, computerknight1, computerbishop1, computerqueen, computerking,computerbishop2, computerknight2,computerrook2],
-             [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7, computerpawn8],
-             [0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0],
-             [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8],
-             [rook1, knight1, bishop1, queen, king, bishop2, knight2, rook2]]
-
-    printBoard(board, '', screen)
-    pygame.display.flip()
-
-    # define a variable to control the main loop
-    running = True
-
-    # main loop
-    while running:
-        # event handling, gets all event from the event queue
-        for event in pygame.event.get():
-
-            if event.type == pygame.MOUSEBUTTONUP:
-                if hightlighting:
-                    pos = pygame.mouse.get_pos()
-                    destinationPiece = getClickedPiece(board, pos)
-                    if destinationPiece and destinationPiece.player != 'black':
-                        targetPiece.pos = destinationPiece.pos
-                        ## fix grid
-                else:
-                    pos = pygame.mouse.get_pos()
-                    targetPiece = getClickedPiece(board, pos)
-                    # moveList = targetPiece.moves()
-                    moveList = ['a1']
-                    printBoard(board, moveList, screen)
-                    pygame.display.flip()
-                    hightlighting = true
-            # only do something if the event is of type QUIT
-            if event.type == pygame.QUIT:
-                # change the value to False, to exit the main loop
-                running = False
-
-# run the main function only if this module is executed as the main script
-# (if you import this as a module then nothing is executed)
-if __name__ == "__main__":
-    # call the main function
-    main()
+def pawnPromotion(board):
+    i = 0
+    for piece in board[0]:
+        if isinstance(piece, Classes.Piece) and piece.value == 1:
+            newQueen = Classes.Queen('white', piece.pos, pygame.image.load("images/white_queen.png"))
+            piece.player = 'none'
+            board[0][i] = newQueen
+        i += 1
+    j = 0
+    for piece in board[7]:
+        if isinstance(piece, Classes.Piece) and piece.value == 1:
+            newQueen = Classes.Queen('black', piece.pos, pygame.image.load("images/black_queen.png"))
+            piece.player = 'none'
+            board[7][j] = newQueen
+        j += 1
+    return board
