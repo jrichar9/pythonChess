@@ -223,6 +223,7 @@ class Queen(Piece):
             if i != row:
                 j = j + 1
                 if j >= 0:
+                    print(i,j)
                     if chessBoard[i][j] != 0:
                         break
                     solutionMoves.append((i, j))
