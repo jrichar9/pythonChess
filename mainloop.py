@@ -55,6 +55,8 @@ board = [
 computerpieces = [computerpawn1, computerpawn2, computerpawn3, computerpawn4, computerpawn5, computerpawn6, computerpawn7,
                   computerpawn8, computerrook1, computerknight1, computerbishop1, computerqueen, computerking, computerbishop2,
                   computerknight2, computerrook2]
+playerpieces = [pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8, rook1, knight1, bishop1, queen, king, bishop2,
+                knight2, rook2]
 
 logo = pygame.image.load("images/white_knight.png")
 pygame.display.set_icon(logo)
@@ -86,6 +88,11 @@ while running:
                         # move piece
                         targetPiece.pos = destinationPiece.pos
                         # delete destination piece
+                        print(destinationPiece.pos)
+                        for x in playerpieces:
+                            if x.pos == destinationPiece.pos:
+                                del x
+                                print(computerpieces)
                         destinationPiece.player = 'none'
                         board = Board.fixGrid(board)
                         Board.printBoard(board, moveList, screen)
@@ -133,26 +140,45 @@ while running:
                 running = False
     else:
 
+        for x in computerpieces:
+            if whosemove % 2 == 0:
+                break
+            for y in playerpieces:
+                if whosemove % 2 == 0:
+                    break
+                for z in x.moves(board):
+                    if whosemove % 2 == 0:
+                        break
+                    if z == y.pos:
+                        if whosemove % 2 == 0:
+                            break
+                        x.pos = y.pos
+                        whosemove += 1
+                        moveList = ''
+                        board = Board.fixGrid(board)
+                        Board.printBoard(board, moveList, screen)
+                        pygame.display.flip()
 
-        compMoveList = []
-        while compMoveList == []:
-            randnum = randint(1, 16)
-            randnum -= 1
-            #print(randnum)
-            #print(computerpieces[randnum])
-            #compMoveList = computerpawn1.moves(board)
-            compMoveList = computerpieces[randnum].moves(board)
-        randnum2 = randint(1, len(compMoveList))
-        randnum2 -= 1
-        newCompPosition = compMoveList[randnum2]
-        #computerpawn1.pos = newCompPosition
-        computerpieces[randnum].pos = newCompPosition
-        computerpieces[randnum].numberOfmoves += 1
-        #print(newCompPosition)
-        #print(compMoveList)
-        moveList = ''
-        board = Board.fixGrid(board)
-        Board.printBoard(board, moveList, screen)
-        pygame.display.flip()
-        # if randint == 2:
-        whosemove += 1
+        if whosemove % 2 != 0:
+            compMoveList = []
+            while compMoveList == []:
+                randnum = randint(1, len(computerpieces))
+                randnum -= 1
+                #print(randnum)
+                #print(computerpieces[randnum])
+                #compMoveList = computerpawn1.moves(board)
+                compMoveList = computerpieces[randnum].moves(board)
+            randnum2 = randint(1, len(compMoveList))
+            randnum2 -= 1
+            newCompPosition = compMoveList[randnum2]
+            #computerpawn1.pos = newCompPosition
+            computerpieces[randnum].pos = newCompPosition
+            computerpieces[randnum].numberOfmoves += 1
+            #print(newCompPosition)
+            #print(compMoveList)
+            moveList = ''
+            board = Board.fixGrid(board)
+            Board.printBoard(board, moveList, screen)
+            pygame.display.flip()
+            # if randint == 2:
+            whosemove += 1
