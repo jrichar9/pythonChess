@@ -134,7 +134,7 @@ while running:
                 # change the value to False, to exit the main loop
                 running = False
     else:
-        time.sleep(2)
+        time.sleep(1)
         for x in computerpieces:
             if whosemove % 2 == 0:
                 break
