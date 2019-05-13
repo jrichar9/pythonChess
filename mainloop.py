@@ -2,6 +2,7 @@ import os
 import Classes
 import Board
 import pygame
+import time
 from random import *
 
 playerColor = 'black'
@@ -70,7 +71,7 @@ running = True
 # define variable that checks if this is the first or second click
 hightlighting = False
 # keeps track if it is the player or computer's turn
-whosemove = 2
+whosemove = 1
 # main loop
 while running:
     # event handling, gets all event from the event queue
@@ -84,28 +85,22 @@ while running:
                     destinationPiece = Board.getClickedPiece(board, pos)
                     destination = Board.convertToGrid(pos)
                     # if there exists an enemy piece at the destination and the move is good
-                    if isinstance(destinationPiece, Classes.Piece) and destinationPiece.player != targetPiece.player and destination in moveList:
-                        # move piece
-                        targetPiece.pos = destinationPiece.pos
-                        # delete destination piece
-                        print(destinationPiece.pos)
-                        for x in playerpieces:
-                            if x.pos == destinationPiece.pos:
-                                del x
-                                print(computerpieces)
-                        destinationPiece.player = 'none'
-                        board = Board.fixGrid(board)
-                        Board.printBoard(board, moveList, screen)
-                        pygame.display.flip()
-                        hightlighting = False
-                        targetPiece.numberOfmoves +=1
-                        whosemove += 1
-                    # if there exists a player piece at destination
-                    if destinationPiece and destinationPiece.player == targetPiece.player:
-                        moveList = ''
-                        Board.printBoard(board, moveList, screen)
-                        pygame.display.flip()
-                        hightlighting = False
+                    if isinstance(destinationPiece, Classes.Piece):
+                        if destinationPiece.player != playerColor and destination in moveList:
+                            # move piece
+                            targetPiece.pos = destinationPiece.pos
+                            # delete destination piece
+                            for x in playerpieces:
+                                if x.pos == destinationPiece.pos:
+                                    del x
+                                    #print(computerpieces)
+                            destinationPiece.player = 'none'
+                            board = Board.fixGrid(board)
+                            Board.printBoard(board, moveList, screen)
+                            pygame.display.flip()
+                            hightlighting = False
+                            targetPiece.numberOfmoves +=1
+                            whosemove += 1
                     # if there is not a piece at the estination and the move is good
                     if not destinationPiece and destination in moveList:
                         targetPiece.pos = destination
@@ -139,7 +134,7 @@ while running:
                 # change the value to False, to exit the main loop
                 running = False
     else:
-
+        time.sleep(1)
         for x in computerpieces:
             if whosemove % 2 == 0:
                 break
@@ -161,6 +156,7 @@ while running:
 
         if whosemove % 2 != 0:
             compMoveList = []
+            computerpieces = Board.getComputerPieces(board)
             while compMoveList == []:
                 randnum = randint(1, len(computerpieces))
                 randnum -= 1
@@ -172,6 +168,10 @@ while running:
             randnum2 -= 1
             newCompPosition = compMoveList[randnum2]
             #computerpawn1.pos = newCompPosition
+            for row in board:
+                for piece in row:
+                    if isinstance(piece, Classes.Piece) and piece.pos == newCompPosition:
+                        piece.player = 'none'
             computerpieces[randnum].pos = newCompPosition
             computerpieces[randnum].numberOfmoves += 1
             #print(newCompPosition)
