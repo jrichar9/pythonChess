@@ -156,13 +156,20 @@ def getClickedPiece(board, pos):
             if isinstance(piece,Classes.Piece) and piece.pos == convertToGrid(pos):
                 return piece
 
+def getComputerPieces(board):
+    computerPieces = []
+    for row in board:
+        for piece in row:
+            if isinstance(piece,Classes.Piece) and piece.player == 'white':
+                computerPieces.append(piece)
+    return computerPieces
+
 def playerInCheck(board, pos):
     threteningPieces = []
     for row in board:
         for piece in row:
             if pos in piece.moves:
                 threteningPieces += piece
-
     return threteningPieces
 
 def pawnPromotion(board):

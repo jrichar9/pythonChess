@@ -135,27 +135,41 @@ class Rook(Piece):
         for i in range(row, -1, -1):
             if i != row:
                 if chessBoard[i][column] != 0:
-                    break
+                    if chessBoard[i][column].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((i, column))
+                        break
                 solutionMoves.append((i, column))
 
         for i in range(row, 8, 1):
             if i != row:
                 if chessBoard[i][column] != 0:
-                    break
+                    if chessBoard[i][column].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((i, column))
+                        break
                 solutionMoves.append((i, column))
 
         for j in range(column, -1, -1):
             if j != column:
-
                 if chessBoard[row][j] != 0:
-                    break
+                    if chessBoard[row][j].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((row, j))
+                        break
                 solutionMoves.append((row, j))
 
         for j in range(column, 8, 1):
             if j != column:
-
                 if chessBoard[row][j] != 0:
-                    break
+                    if chessBoard[row][j].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((row, j))
+                        break
                 solutionMoves.append((row, j))
 
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
@@ -180,24 +194,40 @@ class Queen(Piece):
         for i in range(row, -1, -1):
             if i != row:
                 if chessBoard[i][column] != 0:
-                    break
+                    if chessBoard[i][column].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((i, column))
+                        break
                 solutionMoves.append((i, column))
 
         for i in range(row, 8, 1):
             if i != row:
                 if chessBoard[i][column] != 0:
-                    break
+                    if chessBoard[i][column].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((i, column))
+                        break
                 solutionMoves.append((i, column))
 
         for j in range(column, -1, -1):
             if j != column:
                 if chessBoard[row][j] != 0:
-                    break
+                    if chessBoard[row][j].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((row, j))
+                        break
                 solutionMoves.append((row, j))
         for j in range(column, 8, 1):
             if j != row:
                 if chessBoard[row][j] != 0:
-                    break
+                    if chessBoard[row][j].player == self.player:
+                        break
+                    else:
+                        solutionMoves.append((row, j))
+                        break
                 solutionMoves.append((row, j))
 
         i, j = row, column
@@ -206,7 +236,11 @@ class Queen(Piece):
                 j = j - 1
                 if j >= 0:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         i, j = row, column
@@ -215,17 +249,24 @@ class Queen(Piece):
                 j = j + 1
                 if j < 8:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         i, j = row, column
         for i in range(row, -1, -1):
             if i != row:
                 j = j + 1
-                if j >= 0:
-                    print(i,j)
+                if 8 > j >= 0:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         i, j = row, column
@@ -234,7 +275,11 @@ class Queen(Piece):
                 j = j - 1
                 if j >= 0:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
@@ -324,25 +369,37 @@ class Bishop(Piece):
                 j = j - 1
                 if j >= 0:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         i, j = row, column
         for i in range(row, 8, 1):
             if i != row:
                 j = j + 1
-                if j < 8:
+                if 0 <= j < 8:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         i, j = row, column
         for i in range(row, -1, -1):
             if i != row:
                 j = j + 1
-                if j >= 0:
+                if 8 > j >= 0:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         i, j = row, column
@@ -351,7 +408,11 @@ class Bishop(Piece):
                 j = j - 1
                 if j >= 0:
                     if chessBoard[i][j] != 0:
-                        break
+                        if chessBoard[i][j].player == self.player:
+                            break
+                        else:
+                            solutionMoves.append((i, j))
+                            break
                     solutionMoves.append((i, j))
 
         solutionMoves = ["".join([Piece.fromNumbtoLetter[i[1]], str(i[0] + 1)]) for i in solutionMoves]
